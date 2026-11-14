@@ -1,0 +1,30 @@
+# One-off helper: the publishing tool can only upload text files, so the
+# three self-hosted .woff2 fonts are committed as base64 in _fontsrc/.
+# This job decodes them to fonts/, checks their sha256, removes _fontsrc/
+# and commits the real binaries. It does nothing once _fontsrc/ is gone.
+name: Decode fonts
+on:
+  push:
+    paths:
+      - "_fontsrc/**"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode and verify
+        run: |
+          set -euo pipefail
+          [ -d _fontsrc ] || { echo "nothing to do"; exit 0; }
+          mkdir -p fonts
+          for f in _fontsrc/*.woff2.b64; do
+            base64 -d "$f" > "fonts/$(basename "$f" .b64)"
+          done
+          (cd fonts && sha256sum -c ../_fontsrc/SHA256SUMS)
+          git rm -rq _fontsrc
+          git add fonts/*.woff2
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Decode self-hosted fonts to binary woff2"
+          git push
