@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.dali-ai.co.uk/sitemap.xml
