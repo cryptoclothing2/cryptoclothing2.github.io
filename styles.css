@@ -2003,3 +2003,29 @@ h2 {
   }
   .footer-mark { color: #c9c3ef !important; }
 }
+
+/* intel-launch: DALI Intel access note and app buttons (reuses .button) */
+.access-note {
+  margin: 1.5rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.intel-cta {
+  margin: 1.75rem 0 0 1.25rem;
+}
+
+.waitlist .waitlist-cta {
+  margin-top: 2.25rem;
+}
+
+.waitlist .waitlist-cta a.button {
+  color: #070a18;
+  text-decoration: none;
+}
+
+.waitlist .waitlist-cta a.button:hover {
+  color: #070a18;
+}
