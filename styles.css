@@ -880,51 +880,7 @@ h2 {
 }
 
 /* --------------------------------------------------------------------------
-   02 Included extra
-   -------------------------------------------------------------------------- */
-.extra {
-  padding: 0 0 clamp(5rem, 10vw, 8.5rem);
-}
-
-.extra-card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-  padding: clamp(1.75rem, 4.5vw, 3.75rem);
-  border: 1px solid var(--hair);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(ellipse 60% 90% at 0% 0%, rgba(47, 107, 255, 0.14), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.extra-head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.extra-head h2 {
-  font-size: clamp(2rem, 3.6vw, 3.25rem);
-  line-height: 1.02;
-}
-
-.extra-icon {
-  display: block;
-}
-
-.extra-card p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: clamp(16px, 1.25vw, 18px);
-  line-height: 1.8;
-}
-
-/* --------------------------------------------------------------------------
-   03 What's next
+   02 What's next
    -------------------------------------------------------------------------- */
 .later {
   padding: 0 0 clamp(5rem, 10vw, 8.5rem);
@@ -1020,12 +976,6 @@ h2 {
   border-color: rgba(180, 163, 255, 0.45);
 }
 
-.icon-tile-lg {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
-}
-
 .card-index {
   color: var(--ink-3);
   font-family: var(--font-mono);
@@ -1065,13 +1015,13 @@ h2 {
 }
 
 /* --------------------------------------------------------------------------
-   04 Waitlist
+   03 Get started
    -------------------------------------------------------------------------- */
-.waitlist {
+.get-started {
   padding: 0 0 clamp(5rem, 10vw, 8rem);
 }
 
-.waitlist-card {
+.get-started-card {
   overflow: hidden;
   padding: clamp(2.25rem, 7vw, 6rem) clamp(1.5rem, 6vw, 6rem);
   border: 1px solid rgba(180, 163, 255, 0.16);
@@ -1084,18 +1034,18 @@ h2 {
   text-align: center;
 }
 
-.waitlist-card .index {
+.get-started-card .index {
   justify-content: center;
 }
 
-.waitlist-card .index::before {
+.get-started-card .index::before {
   content: "";
   width: 2.5rem;
   height: 1px;
   background: linear-gradient(270deg, rgba(180, 163, 255, 0.6), transparent);
 }
 
-.waitlist h2 {
+.get-started h2 {
   margin: 1.25rem 0 1.5rem;
   font-size: clamp(3rem, 9vw, 8rem);
   font-weight: 500;
@@ -1104,7 +1054,7 @@ h2 {
   color: #fff;
 }
 
-.waitlist p {
+.get-started p {
   max-width: 40rem;
   margin: 0 auto;
   color: var(--ink-2);
@@ -1112,7 +1062,7 @@ h2 {
   line-height: 1.75;
 }
 
-.waitlist a {
+.get-started a {
   color: #fff;
   font-weight: 500;
   text-decoration: underline;
@@ -1123,7 +1073,7 @@ h2 {
   transition: text-decoration-color 0.25s ease, color 0.25s ease;
 }
 
-.waitlist a:hover {
+.get-started a:hover {
   color: var(--violet-soft);
   text-decoration-color: currentColor;
 }
@@ -1494,7 +1444,6 @@ h2 {
   }
 
   .intel-grid,
-  .extra-card,
   .later-head {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1746,7 +1695,7 @@ h2 {
       animation-range: entry 0% entry 100%;
     }
 
-    .waitlist-card {
+    .get-started-card {
       animation: fx-scale-in linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 70%;
@@ -1972,7 +1921,7 @@ h2 {
 
 /* Print: never print revealed content at opacity 0 */
 @media print {
-  .intel .wrap, .later h2, .later-intro, .site-footer .wrap, .extra .wrap, .waitlist .wrap, .product-list li {
+  .intel .wrap, .later h2, .later-intro, .site-footer .wrap, .get-started .wrap, .product-list li {
     animation: none !important; opacity: 1 !important; transform: none !important;
   }
 }
@@ -1986,7 +1935,7 @@ h2 {
 }
 
 @media print {
-  .reveal, .bl, .badge-hero, .hero-action, .hero-inner, .lens, .waitlist-card, .footer-mark {
+  .reveal, .bl, .badge-hero, .hero-action, .hero-inner, .lens, .get-started-card, .footer-mark {
     animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important;
   }
   .scene, .grain, .scroll-progress, .motion-toggle, .cursor-glow, .scroll-cue, .site-header { display: none !important; }
@@ -2017,15 +1966,15 @@ h2 {
   margin: 1.75rem 0 0 1.25rem;
 }
 
-.waitlist .waitlist-cta {
+.get-started .get-started-cta {
   margin-top: 2.25rem;
 }
 
-.waitlist .waitlist-cta a.button {
+.get-started .get-started-cta a.button {
   color: #070a18;
   text-decoration: none;
 }
 
-.waitlist .waitlist-cta a.button:hover {
+.get-started .get-started-cta a.button:hover {
   color: #070a18;
 }
