@@ -172,7 +172,7 @@ main,
 }
 
 .is-scrolled .header-inner {
-  width: min(62rem, 100%);
+  width: min(70rem, 100%);
   border-color: rgba(180, 163, 255, 0.16);
   background: linear-gradient(180deg, rgba(17, 26, 51, 0.86), rgba(10, 16, 36, 0.8));
 }
@@ -262,6 +262,13 @@ main,
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.header-intel {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .header-link {
@@ -879,8 +886,109 @@ h2 {
   opacity: 1;
 }
 
+
 /* --------------------------------------------------------------------------
-   02 What's next
+   02 DALI Pay
+   -------------------------------------------------------------------------- */
+.pay {
+  padding: 0 0 clamp(4rem, 8vw, 7rem);
+}
+
+.pay .section-head {
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
+}
+
+.pay .badge {
+  flex: 0 0 auto;
+}
+
+.pay-heading {
+  margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 16em;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.8vw, 4.6rem);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+.pay-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.pay-cta {
+  margin: 1.75rem 0 0 1.25rem;
+}
+
+.pay-panel {
+  position: relative;
+  padding: 1.75rem 1.6rem 1.85rem;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse 80% 80% at 100% 0%, rgba(124, 92, 255, 0.2), transparent 60%),
+    linear-gradient(180deg, rgba(17, 26, 51, 0.78), rgba(10, 16, 36, 0.7));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 40px 100px -40px rgba(47, 107, 255, 0.55),
+    0 20px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+.pay-panel-kicker {
+  margin: 0 0 1.35rem;
+  color: var(--electric-soft);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pay-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: pay-step;
+}
+
+.pay-steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.pay-steps li:last-child {
+  padding-bottom: 0.15rem;
+}
+
+.pay-steps li::before {
+  counter-increment: pay-step;
+  content: counter(pay-step, decimal-leading-zero);
+  color: var(--violet-soft);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   03 What's next
    -------------------------------------------------------------------------- */
 .later {
   padding: 0 0 clamp(5rem, 10vw, 8.5rem);
@@ -1015,7 +1123,7 @@ h2 {
 }
 
 /* --------------------------------------------------------------------------
-   03 Get started
+   04 Get started
    -------------------------------------------------------------------------- */
 .get-started {
   padding: 0 0 clamp(5rem, 10vw, 8rem);
@@ -1444,6 +1552,7 @@ h2 {
   }
 
   .intel-grid,
+  .pay-grid,
   .later-head {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1547,6 +1656,15 @@ h2 {
   .motion-toggle {
     width: 36px;
     height: 36px;
+  }
+
+  .pay-cta {
+    margin-left: 0;
+  }
+
+  .pay-cta .button {
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -1653,7 +1771,8 @@ h2 {
     -webkit-text-fill-color: transparent;
   }
 
-  h1 {
+  h1,
+  .pay-heading {
     background-image: linear-gradient(100deg, #ffffff 0%, #dce6ff 40%, #b4a3ff 75%, #6ea8ff 100%);
     background-size: 160% 100%;
     -webkit-background-clip: text;
@@ -1900,7 +2019,8 @@ h2 {
   }
 
   .brand-line,
-  h1 {
+  h1,
+  .pay-heading {
     background-image: none;
     color: #fff;
     -webkit-text-fill-color: #fff;
@@ -1915,13 +2035,13 @@ h2 {
 
 /* Forced-colors (Windows High Contrast): keep headlines visible, drop decoration */
 @media (forced-colors: active) {
-  .brand-line, h1 { background-image: none; color: CanvasText; -webkit-text-fill-color: CanvasText; }
+  .brand-line, h1, .pay-heading { background-image: none; color: CanvasText; -webkit-text-fill-color: CanvasText; }
   .aurora, .scroll-progress { display: none; }
 }
 
 /* Print: never print revealed content at opacity 0 */
 @media print {
-  .intel .wrap, .later h2, .later-intro, .site-footer .wrap, .get-started .wrap, .product-list li {
+  .intel .wrap, .pay .wrap, .later h2, .later-intro, .site-footer .wrap, .get-started .wrap, .product-list li {
     animation: none !important; opacity: 1 !important; transform: none !important;
   }
 }
@@ -1935,7 +2055,7 @@ h2 {
 }
 
 @media print {
-  .reveal, .bl, .badge-hero, .hero-action, .hero-inner, .lens, .get-started-card, .footer-mark {
+  .reveal, .bl, .badge-hero, .hero-action, .hero-inner, .lens, .pay-heading, .get-started-card, .footer-mark {
     animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important;
   }
   .scene, .grain, .scroll-progress, .motion-toggle, .cursor-glow, .scroll-cue, .site-header { display: none !important; }
@@ -1945,7 +2065,7 @@ h2 {
   .hero-bg, .aurora, .diff-scan, .divider::after { display: none !important; }
   .row.add { opacity: 1 !important; filter: none !important; }
   /* Gradient-clipped text prints as a box in some engines: use plain ink */
-  .bl-3, h1, .footer-mark {
+  .bl-3, h1, .pay-heading, .footer-mark {
     background: none !important;
     color: #2a1f7a !important;
     -webkit-text-fill-color: currentColor !important;
