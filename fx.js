@@ -43,15 +43,11 @@
     }, 2500);
   }
 
-  /* Motion toggle (pauses decorative loops; WCAG 2.2.2) */
-  var toggle = document.querySelector(".motion-toggle");
-  if (toggle && !reduce.matches) {
-    toggle.hidden = false;
-    toggle.addEventListener("click", function () {
-      var paused = toggle.getAttribute("aria-pressed") !== "true";
-      toggle.setAttribute("aria-pressed", paused ? "true" : "false");
-      doc.classList.toggle("motion-paused", paused);
-    });
+  /* No visible play/pause control. Decorative motion still respects
+     prefers-reduced-motion, and the canvas ticker already stops while
+     the tab is hidden. */
+  if (reduce.matches) {
+    doc.classList.add("motion-paused");
   }
 
   /* Background scene. One rAF ticker drives two things:
@@ -221,7 +217,6 @@
     if ("ResizeObserver" in window) new ResizeObserver(measure).observe(document.body);
     window.addEventListener("pointermove", function (e) { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
     document.addEventListener("visibilitychange", start);
-    if (toggle) toggle.addEventListener("click", function () { window.setTimeout(start, 0); });
     window.requestAnimationFrame(function () { canvas.classList.add("on"); });
     start();
   }
